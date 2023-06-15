@@ -1,4 +1,3 @@
-import { requestTimeStamps } from 'api';
 import ReactPlayer from 'react-player';
 
 export const VideoPlayer = () => {
