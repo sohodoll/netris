@@ -1,16 +1,23 @@
-export const Timestamps = () => {
+import { Timestamp } from 'redux/videoReducer';
+import styles from './styles.module.css';
+import { formatDuration } from 'helpers/formatDuration';
+
+type TimestampsProps = {
+  timestamps: Timestamp[];
+};
+
+export const Timestamps = ({ timestamps }: TimestampsProps) => {
   return (
-    <div className='Timestamps'>
+    <div className={styles.container}>
       <h2>Timestamps</h2>
-      <div>
-        <div>111111</div>
-        <div>222222</div>
-        <div>33333</div>
-        <div>44444</div>
-        <div>55555</div>
-        <div>66666</div>
-        <div>77777</div>
-        <div>88888</div>
+      <div className={styles.wrapper}>
+        <div className={styles.timestamps}>
+          {timestamps
+            .sort((a, b) => a.timestamp - b.timestamp)
+            .map((timestamp: Timestamp) => {
+              return <div key={timestamp.id}>{formatDuration(timestamp.timestamp)}</div>;
+            })}
+        </div>
       </div>
     </div>
   );

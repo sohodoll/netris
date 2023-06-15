@@ -5,7 +5,7 @@ import { MainStateProps } from './types';
 export const Main = (props: MainStateProps) => {
   return (
     <main className={styles.wrapper}>
-      <Timestamps />
+      <Timestamps timestamps={props.timestamps} />
       <VideoPlayer />
     </main>
   );
