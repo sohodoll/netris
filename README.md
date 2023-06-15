@@ -1,2 +1,0 @@
-# netris
-netris project
