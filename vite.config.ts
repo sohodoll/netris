@@ -26,6 +26,7 @@ const alias: AliasOptions = getAlias([
   'store',
   'api',
   'types',
+  'reduxStore',
 ]);
 
 export default defineConfig({

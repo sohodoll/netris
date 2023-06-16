@@ -1,7 +1,7 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects';
 import { SET_TIMESTAMPS, setTimestamps, SET_VIDEO_PAUSE, SET_VIDEO_RESUME } from './actions';
 import { requestTimeStamps } from 'api';
-import { StateType } from 'redux/rootReducer';
+import { StateType } from 'reduxStore/rootReducer';
 
 function* fetchTimestamps(action: any): Generator<any, void, any> {
   try {
