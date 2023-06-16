@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const requestVideoUrl = () => {
-  return 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
+  return 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 };
