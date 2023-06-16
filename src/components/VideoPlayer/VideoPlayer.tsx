@@ -6,6 +6,7 @@ import { StateType } from 'reduxStore/rootReducer';
 import { Timestamp } from 'reduxStore/videoReducer';
 import { EventOverlay } from './EventOverlay';
 import styles from './styles.module.css';
+import { requestVideoUrl } from 'api';
 
 type VideoPlayerProps = {
   currentTimestamps: Timestamp[];
@@ -15,6 +16,7 @@ export const VideoPlayer = ({ currentTimestamps }: VideoPlayerProps) => {
   const currentTimestamp = useSelector((state: StateType) => state.video.currentTimestamp);
   const dispatch = useDispatch();
   const playerRef = useRef<ReactPlayer | null>(null);
+  const URL = requestVideoUrl();
 
   useEffect(() => {
     if (playerRef.current) {
@@ -26,7 +28,7 @@ export const VideoPlayer = ({ currentTimestamps }: VideoPlayerProps) => {
     <div className={styles.player}>
       <ReactPlayer
         ref={playerRef}
-        url='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+        url={URL}
         controls
         width='900px'
         height='540px'
