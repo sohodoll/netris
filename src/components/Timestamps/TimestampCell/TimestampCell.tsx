@@ -6,13 +6,18 @@ import { Timestamp } from 'reduxStore/videoReducer';
 type TimestampCellProps = {
   timestamp: Timestamp;
   className: any;
+  currentTimestamp: number;
 };
 
-export const TimestampCell = ({ timestamp, className }: TimestampCellProps) => {
+export const TimestampCell = ({ timestamp, className, currentTimestamp }: TimestampCellProps) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    dispatch(setTimestamp(timestamp.timestamp));
+    if (timestamp.timestamp == currentTimestamp) {
+      dispatch(setTimestamp(timestamp.timestamp + 1));
+    } else {
+      dispatch(setTimestamp(timestamp.timestamp));
+    }
   };
 
   return (

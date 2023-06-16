@@ -5,3 +5,26 @@
   height: 100%;
   gap: 4rem;
 }
+
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+
+.logo {
+  width: 150px;
+  transition: all 0.2s ease-out;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.heading {
+  font-size: 5rem;
+}

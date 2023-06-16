@@ -7,7 +7,7 @@ import {
   SET_CURRENT_TIMESTAMP,
 } from './actions';
 
-export interface Timestamp {
+export type Timestamp = {
   id: number;
   timestamp: number;
   duration: number;
@@ -18,7 +18,7 @@ export interface Timestamp {
     height: number;
   };
   finish: number;
-}
+};
 
 const initialState = {
   id: '5e60c5f53300005fcc97bbdd',

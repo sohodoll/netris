@@ -12,7 +12,7 @@ type TimestampsProps = {
 export const Timestamps = ({ timestamps, currentTimestamp, currentTimestamps }: TimestampsProps) => {
   return (
     <div className={styles.container}>
-      <h2>Timestamps</h2>
+      <h2 className={styles.heading}>Timestamps</h2>
       <div className={styles.wrapper}>
         <div className={styles.timestamps}>
           {[...timestamps]
@@ -21,6 +21,7 @@ export const Timestamps = ({ timestamps, currentTimestamp, currentTimestamps }: 
               <TimestampCell
                 key={timestamp.id}
                 timestamp={timestamp}
+                currentTimestamp={currentTimestamp}
                 className={currentTimestamps.find((item) => item.id == timestamp.id) ? `${styles.active}` : ''}
               />
             ))}

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;500;600;700;800&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -14,6 +16,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html {
+  height: 100vh;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+* {
+  font-family: 'Baloo Thambi 2', sans-serif;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,11 +35,9 @@ a:hover {
 }
 
 body {
+  height: 100%;
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {

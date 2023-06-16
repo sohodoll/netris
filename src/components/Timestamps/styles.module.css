@@ -3,10 +3,39 @@
   overflow-y: auto;
 }
 
+.wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: rgb(53, 129, 201, 0.4);
+  border-radius: 4px;
+}
+
 .timestamps {
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 1.2rem;
+}
+
+.timestamps div {
+  font-weight: 500;
+  width: 100px;
+  padding: 0 0.5rem;
+  margin-left: 25px;
+  cursor: pointer;
 }
 
 .active {
-  background-color: cadetblue;
+  background-color: rgb(53, 129, 201, 0.4);
+  border-radius: 5px;
+}
+
+.heading {
+  font-size: 2rem;
 }

@@ -1,11 +1,11 @@
 import styles from '../styles.module.css';
 
-interface EventOverlayProps {
+type EventOverlayProps = {
   left: number;
   top: number;
   width: number;
   height: number;
-}
+};
 
 export const EventOverlay: React.FC<EventOverlayProps> = ({ left, top, width, height }) => {
   const style: React.CSSProperties = {

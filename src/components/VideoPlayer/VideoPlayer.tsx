@@ -22,8 +22,6 @@ export const VideoPlayer = ({ currentTimestamps }: VideoPlayerProps) => {
     }
   }, [currentTimestamp]);
 
-  console.log(currentTimestamps);
-
   return (
     <div className={styles.player}>
       <ReactPlayer
