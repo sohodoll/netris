@@ -1,0 +1,7 @@
+.player {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+}

@@ -3,8 +3,15 @@ import ReactPlayer from 'react-player';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentTime } from 'reduxStore/actions';
 import { StateType } from 'reduxStore/rootReducer';
+import { Timestamp } from 'reduxStore/videoReducer';
+import { EventOverlay } from './EventOverlay';
+import styles from './styles.module.css';
 
-export const VideoPlayer = () => {
+type VideoPlayerProps = {
+  currentTimestamps: Timestamp[];
+};
+
+export const VideoPlayer = ({ currentTimestamps }: VideoPlayerProps) => {
   const currentTimestamp = useSelector((state: StateType) => state.video.currentTimestamp);
   const dispatch = useDispatch();
   const playerRef = useRef<ReactPlayer | null>(null);
@@ -15,8 +22,10 @@ export const VideoPlayer = () => {
     }
   }, [currentTimestamp]);
 
+  console.log(currentTimestamps);
+
   return (
-    <div>
+    <div className={styles.player}>
       <ReactPlayer
         ref={playerRef}
         url='http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
@@ -29,6 +38,17 @@ export const VideoPlayer = () => {
           dispatch(setCurrentTime(playedSeconds));
         }}
       />
+      {currentTimestamps.map((timestamp) => {
+        return (
+          <EventOverlay
+            key={timestamp.timestamp}
+            left={timestamp.zone.left}
+            top={timestamp.zone.top}
+            width={timestamp.zone.width}
+            height={timestamp.zone.height}
+          />
+        );
+      })}
     </div>
   );
 };
