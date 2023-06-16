@@ -6,3 +6,7 @@
 .timestamps {
   overflow-y: auto;
 }
+
+.active {
+  background-color: cadetblue;
+}

@@ -1,13 +1,15 @@
 import { Timestamp } from 'reduxStore/videoReducer';
 import styles from './styles.module.css';
 import { TimestampCell } from './TimestampCell/TimestampCell';
+import { useEffect } from 'react';
 
 type TimestampsProps = {
   timestamps: Timestamp[];
-  timestamp: number;
+  currentTimestamp: number;
+  currentTimestamps: Timestamp[];
 };
 
-export const Timestamps = ({ timestamps, timestamp }: TimestampsProps) => {
+export const Timestamps = ({ timestamps, currentTimestamp, currentTimestamps }: TimestampsProps) => {
   return (
     <div className={styles.container}>
       <h2>Timestamps</h2>
@@ -16,7 +18,11 @@ export const Timestamps = ({ timestamps, timestamp }: TimestampsProps) => {
           {[...timestamps]
             .sort((a, b) => a.timestamp - b.timestamp)
             .map((timestamp: Timestamp) => (
-              <TimestampCell key={timestamp.id} timestamp={timestamp} />
+              <TimestampCell
+                key={timestamp.id}
+                timestamp={timestamp}
+                className={currentTimestamps.find((item) => item.id == timestamp.id) ? `${styles.active}` : ''}
+              />
             ))}
         </div>
       </div>

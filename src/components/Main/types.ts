@@ -4,7 +4,8 @@ export type MainStateProps = {
   id: string;
   paused: boolean;
   timestamps: Timestamp[];
-  timestamp: number;
+  currentTimestamp: number;
+  currentTimestamps: Timestamp[];
 };
 
 export type MainDispatchProps = {

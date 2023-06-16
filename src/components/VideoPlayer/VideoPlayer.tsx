@@ -5,7 +5,7 @@ import { setCurrentTime } from 'reduxStore/actions';
 import { StateType } from 'reduxStore/rootReducer';
 
 export const VideoPlayer = () => {
-  const currentTimestamp = useSelector((state: StateType) => state.video.timestamp);
+  const currentTimestamp = useSelector((state: StateType) => state.video.currentTimestamp);
   const dispatch = useDispatch();
   const playerRef = useRef<ReactPlayer | null>(null);
 

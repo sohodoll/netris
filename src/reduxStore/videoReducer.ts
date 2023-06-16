@@ -1,4 +1,11 @@
-import { SET_TIMESTAMPS, SET_VIDEO_PAUSE, SET_VIDEO_RESUME, SET_CURRENT_TIME, SET_TIMESTAMP } from './actions';
+import {
+  SET_TIMESTAMPS,
+  SET_VIDEO_PAUSE,
+  SET_VIDEO_RESUME,
+  SET_CURRENT_TIME,
+  SET_CURRENT_TIMESTAMPS,
+  SET_CURRENT_TIMESTAMP,
+} from './actions';
 
 export interface Timestamp {
   id: number;
@@ -10,6 +17,7 @@ export interface Timestamp {
     width: number;
     height: number;
   };
+  finish: number;
 }
 
 const initialState = {
@@ -17,7 +25,8 @@ const initialState = {
   paused: true,
   timestamps: [] as Timestamp[],
   currentTime: 0,
-  timestamp: null,
+  currentTimestamp: null,
+  currentTimestamps: [] as Timestamp[],
 };
 
 export const videoReducer = (state = initialState, action: any) => {
@@ -43,10 +52,16 @@ export const videoReducer = (state = initialState, action: any) => {
         currentTime: action.payload,
       };
 
-    case SET_TIMESTAMP:
+    case SET_CURRENT_TIMESTAMP:
       return {
         ...state,
-        timestamp: action.payload,
+        currentTimestamp: action.payload,
+      };
+
+    case SET_CURRENT_TIMESTAMPS:
+      return {
+        ...state,
+        currentTimestamps: [...action.payload],
       };
     default:
       return state;

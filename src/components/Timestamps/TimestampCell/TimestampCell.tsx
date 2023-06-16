@@ -3,7 +3,12 @@ import { useDispatch } from 'react-redux';
 import { setTimestamp } from 'reduxStore/actions';
 import { Timestamp } from 'reduxStore/videoReducer';
 
-export const TimestampCell = ({ timestamp }: { timestamp: Timestamp }) => {
+type TimestampCellProps = {
+  timestamp: Timestamp;
+  className: any;
+};
+
+export const TimestampCell = ({ timestamp, className }: TimestampCellProps) => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -11,7 +16,7 @@ export const TimestampCell = ({ timestamp }: { timestamp: Timestamp }) => {
   };
 
   return (
-    <div onClick={handleClick} key={timestamp.id}>
+    <div className={className} onClick={handleClick} key={timestamp.id}>
       {formatDuration(timestamp.timestamp)}
     </div>
   );
