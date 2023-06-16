@@ -1,5 +1,5 @@
 import { takeEvery, call, put, select } from 'redux-saga/effects';
-import { SET_TIMESTAMPS, setTimestamps, SET_VIDEO_PAUSE, SET_VIDEO_RESUME, SET_CURRENT_TIME, setCurrentTimestamps } from './actions';
+import { SET_TIMESTAMPS, setTimestamps, SET_CURRENT_TIME, setCurrentTimestamps } from './actions';
 import { requestTimeStamps } from 'api';
 import { StateType } from 'reduxStore/rootReducer';
 import { Timestamp } from './videoReducer';
@@ -27,37 +27,23 @@ function* fetchTimestamps(action: any): Generator<any, void, any> {
   }
 }
 
-function* handleSetVideoPause() {
-  yield console.log('Video paused');
-}
-
-function* handleSetVideoResume() {
-  yield console.log('Video resumed');
-}
-
 function* handleCurrentTimestamps() {
   try {
     const state: StateType = yield select();
     const timestamps = state.video.timestamps;
     const currentTime = state.video.currentTime;
-    const currentTimestamps = state.video.currentTimestamps;
-    const newCurrentTimestamps: Set<Timestamp> = new Set();
 
-    timestamps.forEach((timestamp: Timestamp) => {
-      if (timestamp.timestamp / 1000 <= currentTime && currentTime <= timestamp.finish / 1000) {
-        newCurrentTimestamps.add(timestamp);
-      }
-    });
+    const currentTimestamps = timestamps.filter(
+      (timestamp: Timestamp) => timestamp.timestamp / 1000 <= currentTime && currentTime <= timestamp.finish / 1000
+    );
 
-    yield put(setCurrentTimestamps(Array(...newCurrentTimestamps)));
+    yield put(setCurrentTimestamps(currentTimestamps));
   } catch (error) {
     console.error('Error setting timestamps:', error);
   }
 }
 
 export function* watchVideoActions() {
-  yield takeEvery(SET_VIDEO_PAUSE, handleSetVideoPause);
-  yield takeEvery(SET_VIDEO_RESUME, handleSetVideoResume);
   yield takeEvery(SET_CURRENT_TIME, handleCurrentTimestamps);
   yield call(fetchTimestamps, { type: SET_TIMESTAMPS });
 }

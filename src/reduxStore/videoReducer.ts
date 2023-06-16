@@ -1,11 +1,4 @@
-import {
-  SET_TIMESTAMPS,
-  SET_VIDEO_PAUSE,
-  SET_VIDEO_RESUME,
-  SET_CURRENT_TIME,
-  SET_CURRENT_TIMESTAMPS,
-  SET_CURRENT_TIMESTAMP,
-} from './actions';
+import { SET_TIMESTAMPS, SET_CURRENT_TIME, SET_CURRENT_TIMESTAMPS, SET_CURRENT_TIMESTAMP } from './actions';
 
 export type Timestamp = {
   id: number;
@@ -31,16 +24,6 @@ const initialState = {
 
 export const videoReducer = (state = initialState, action: any) => {
   switch (action.type) {
-    case SET_VIDEO_PAUSE:
-      return {
-        ...state,
-        paused: true,
-      };
-    case SET_VIDEO_RESUME:
-      return {
-        ...state,
-        paused: false,
-      };
     case SET_TIMESTAMPS:
       return {
         ...state,
